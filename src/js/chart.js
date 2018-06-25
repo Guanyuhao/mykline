@@ -159,8 +159,8 @@ export class Chart {
         _data.bids_count = array.bids.length;
         _data.asks_si = _data.asks_count - 1;
         _data.asks_ei = 0;
-        _data.bids_si = _data.asks_count - 1;
-        _data.bids_ei = _data.asks_count + _data.bids_count - 2;
+        _data.bids_si = _data.asks_count ;
+        _data.bids_ei = _data.asks_count + _data.bids_count - 1;
         for (let i = _data.asks_si; i >= _data.asks_ei; i--) {
             if (i === _data.asks_si && _data.array[i] !== undefined) {
                 _data.array[i].amounts = _data.array[i].amount;
@@ -171,7 +171,7 @@ export class Chart {
         for (let i = _data.bids_si; i <= _data.bids_ei; i++) {
             if (i === _data.bids_si && _data.array[i] !== undefined) {
                 _data.array[i].amounts = _data.array[i].amount;
-            } else if (_data.array[i - 1] !== undefined) {
+            } else if (_data.array[i - 1] !== undefined && i !== 0) {
                 _data.array[i].amounts = _data.array[i - 1].amounts + _data.array[i].amount;
             }
         }

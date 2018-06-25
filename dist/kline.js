@@ -15664,8 +15664,8 @@ function () {
       _data.bids_count = array.bids.length;
       _data.asks_si = _data.asks_count - 1;
       _data.asks_ei = 0;
-      _data.bids_si = _data.asks_count - 1;
-      _data.bids_ei = _data.asks_count + _data.bids_count - 2;
+      _data.bids_si = _data.asks_count ;
+      _data.bids_ei = _data.asks_count + _data.bids_count - 1;
 
       for (var _i2 = _data.asks_si; _i2 >= _data.asks_ei; _i2--) {
         if (_i2 === _data.asks_si && _data.array[_i2] !== undefined) {
@@ -15678,7 +15678,7 @@ function () {
       for (var _i3 = _data.bids_si; _i3 <= _data.bids_ei; _i3++) {
         if (_i3 === _data.bids_si && _data.array[_i3] !== undefined) {
           _data.array[_i3].amounts = _data.array[_i3].amount;
-        } else if (_data.array[_i3 - 1] !== undefined) {
+        } else if (_data.array[_i3 - 1] !== undefined && _i3 !== 0) {
           _data.array[_i3].amounts = _data.array[_i3 - 1].amounts + _data.array[_i3].amount;
         }
       }
